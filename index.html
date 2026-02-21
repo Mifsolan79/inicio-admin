@@ -451,6 +451,11 @@
         padding: 15px;
       }
 
+      .countdown-timer {
+        gap: 15px;
+        /* Reducido de 25px */
+      }
+
       .time-number {
         font-size: 2rem;
       }
@@ -464,21 +469,28 @@
       .countdown-section {
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
       }
 
       .countdown-card {
         width: 100%;
         min-width: 0;
-        padding: 12px;
+        padding: 15px 10px;
+      }
+
+      .countdown-timer {
+        gap: 8px;
+        /* Gap mínimo para móviles estrechos */
       }
 
       .time-number {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        letter-spacing: 0;
+        /* Sin letter-spacing extra en móvil */
       }
 
       .time-label {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
       }
 
       .countdown-title {
