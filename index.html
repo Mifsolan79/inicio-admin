@@ -775,7 +775,7 @@
         inset 0 0 0 1px var(--neon);
     }
 
-    /* ---------- BOTONERA IMPORTANTE ---------- */
+    /* ---------- BOTONERA IMPORTANTE (Original) ---------- */
     .btn-importante-wrapper {
       position: absolute;
       top: 0;
@@ -1209,9 +1209,192 @@
         /* Milder hover effect */
       }
     }
+
+    /* ---------- WIDGET CREADOR (NUEVO) ---------- */
+    .creator-widget {
+      position: fixed;
+      top: 25px;
+      right: 30px;
+      z-index: 10000;
+    }
+
+    .creator-card {
+      position: absolute;
+      top: calc(100% + 15px);
+      right: 0;
+      width: 380px;
+      background: rgba(10, 15, 30, 0.95);
+      border: 1px solid var(--amber);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.8), 0 0 25px rgba(255, 165, 0, 0.15);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px) scale(0.95);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-origin: top right;
+      pointer-events: none;
+    }
+
+    .creator-widget:hover .creator-card {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .creator-card::before {
+      content: '';
+      position: absolute;
+      top: -9px;
+      right: 45px;
+      width: 16px;
+      height: 16px;
+      background: rgba(10, 15, 30, 0.95);
+      border-left: 1px solid var(--amber);
+      border-top: 1px solid var(--amber);
+      transform: rotate(45deg);
+    }
+
+    .creator-card h4 {
+      margin: 0 0 5px 0;
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.15rem;
+      text-shadow: 0 0 10px rgba(255, 210, 77, 0.5);
+      letter-spacing: 0.5px;
+    }
+
+    .creator-card .role {
+      color: var(--amber);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin: 0 0 15px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .creator-card .purpose-box {
+      background: rgba(0, 255, 255, 0.05);
+      border-left: 3px solid var(--neon);
+      padding: 10px 12px;
+      margin-bottom: 15px;
+      font-size: 0.8rem;
+      color: var(--ink);
+      border-radius: 0 8px 8px 0;
+      line-height: 1.4;
+    }
+
+    .creator-card .purpose-box strong {
+      color: var(--neon);
+    }
+
+    .creator-card .desc {
+      color: var(--ink);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      margin: 0 0 15px 0;
+      text-align: left;
+    }
+
+    .creator-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 15px;
+    }
+
+    .creator-card .tag {
+      background: rgba(255, 210, 77, 0.1);
+      border: 1px solid rgba(255, 210, 77, 0.3);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.7rem;
+      color: var(--amber);
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .creator-card .contact {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--neon);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .creator-card .contact:hover {
+      color: #fff;
+      text-shadow: 0 0 8px var(--neon);
+    }
+
+    /* Responsive Ajustes para Widget Creador */
+    @media (max-width: 768px) {
+      .creator-widget {
+        top: 15px;
+        right: 15px;
+      }
+      .creator-card {
+        width: 320px;
+        right: -5px; /* Ajuste para que no se salga de pantalla */
+      }
+      .creator-card::before {
+        right: 40px;
+      }
+      .creator-widget .btn-importante {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+      }
+    }
   </style>
 
 <body>
+
+  <!-- WIDGET CREADOR FLOTANTE (Superior Derecha) -->
+  <div class="creator-widget">
+    <div class="btn-importante" style="cursor: help;">
+      <span class="spark" style="--x: 20%; --t: 2s;"></span>
+      <span class="spark" style="--x: 50%; --t: 3s;"></span>
+      <span class="spark" style="--x: 80%; --t: 2.5s;"></span>
+      <span class="pulse"></span>
+      🌟 CREADOR DE ESTA WEB
+    </div>
+    
+    <!-- Tarjeta desplegable -->
+    <div class="creator-card">
+      <h4>Francisco Mifsut Barcenilla</h4>
+      <div class="role">Gestor Operativo y Administrativo</div>
+      
+      <div class="purpose-box">
+        🎓 <strong>Propósito:</strong> Esta web se ha creado <em>sin ánimo de lucro</em> para ayudar a las personas que se están sacando la titulación de <strong>Técnico Superior de Administración y Finanzas</strong>.
+      </div>
+
+      <div class="tags">
+        <span class="tag">SIGLE (Logística)</span>
+        <span class="tag">SIGERES (Residencias)</span>
+        <span class="tag">SINFRADEF (Infra.)</span>
+      </div>
+
+      <div class="desc">
+        Más de 21 años dando soporte operativo. Control de caja, trazabilidad y atención a usuarios.<br><br>
+        <strong>• Taller y Logística:</strong> Gestión de flota (15 vehículos), órdenes de trabajo, repuestos y regularización de facturas.<br>
+        <strong>• Alimentación y Alojamiento:</strong> Tarjetas, coordinación de catering, cobros, arqueos diarios y atención directa a residentes.<br>
+        <strong>• Recepción:</strong> Seguimiento proactivo de trabajos, coordinación de almacén y resolución de incidencias.
+      </div>
+      
+      <a href="mailto:mifsut@protonmail.com" class="contact">
+        ✉️ mifsut@protonmail.com
+      </a>
+    </div>
+  </div>
+
   <div id="fullpage">
     <!-- SECCIÓN 1: PORTADA Y CUENTA ATRÁS -->
     <section class="section stage" data-anchor="portada">
@@ -1538,7 +1721,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       // Inicialización de fullPage.js
       new fullpage('#fullpage', {
-        licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+        licenseKey: 'gplv3-license',
         navigation: true,
         navigationPosition: 'right',
         anchors: ['portada', 'primero', 'segundo'],
@@ -1607,26 +1790,22 @@
             <div class="countdown-timer">
                 <div class="time-unit">
                     <span class="time-number">${Math.max(0, days)}</span>
- 
-                   <span class="time-label">Días</span>
+                    <span class="time-label">Días</span>
                 </div>
                 <div class="time-unit">
                     <span class="time-number">${Math.max(0, hours)}</span>
                     <span class="time-label">Horas</span>
-    
             </div>
                 <div class="time-unit">
                     <span class="time-number">${Math.max(0, minutes)}</span>
                     <span class="time-label">Min</span>
                 </div>
-            
      <div class="time-unit">
                     <span class="time-number">${Math.max(0, seconds)}</span>
                     <span class="time-label">Seg</span>
                 </div>
             </div>
             <div class="countdown-date">
-            
       📅 ${event.date.toLocaleDateString('es-ES', {
           weekday: 'long',
           year: 'numeric',
@@ -1645,8 +1824,7 @@
             <div class="countdown-card">
                 <div class="countdown-title">🎉 Curso Completado</div>
                 <div style="text-align: center; color: #66ccff; font-size: 1.1rem; padding: 20px 0;">
-                
-     ¡No hay eventos académicos pendientes!
+      ¡No hay eventos académicos pendientes!
                 </div>
             </div>
         `;
