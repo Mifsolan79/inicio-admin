@@ -1257,6 +1257,7 @@
       max-width: 800px;
       max-height: 90vh;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch; /* Habilitar scroll táctil suave en iOS */
       box-shadow: 0 0 40px rgba(255, 165, 0, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);
       position: relative;
       color: var(--ink);
@@ -1759,7 +1760,7 @@
     <div class="cv-modal-content">
       <span class="cv-close">&times;</span>
       
-      <h2>Francisco Mifsut Barcenilla</h2>
+      <h2>¿Quién soy?</h2>
       <div class="role-title">Gestor Operativo y Administrativo</div>
       
       <div class="contact-info">
@@ -1852,6 +1853,7 @@
         autoScrolling: true,
         scrollHorizontally: true,
         responsiveWidth: 768, // Se desactiva en móviles para permitir scroll normal
+        normalScrollElements: '#cvModal, .cv-modal-content' // Permite el scroll nativo dentro del modal
       });
 
       createCountdowns();
