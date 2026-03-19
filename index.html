@@ -803,6 +803,7 @@
       letter-spacing: .6px;
       color: #1b0f00;
       font-size: 0.9rem;
+      cursor: pointer; /* Añadido pointer */
 
       background: linear-gradient(120deg, var(--o1), var(--o2), var(--o3), var(--o1));
       background-size: 220% 220%;
@@ -1210,7 +1211,7 @@
       }
     }
 
-    /* ---------- WIDGET CREADOR (NUEVO) ---------- */
+    /* ---------- WIDGET CREADOR ---------- */
     .creator-widget {
       position: fixed;
       top: 25px;
@@ -1341,11 +1342,18 @@
       transition: all 0.2s;
       padding-top: 12px;
       border-top: 1px solid rgba(255,255,255,0.1);
+      justify-content: space-between;
     }
 
     .creator-card .contact:hover {
       color: #fff;
       text-shadow: 0 0 8px var(--neon);
+    }
+    
+    .click-hint {
+      font-size: 0.7rem;
+      color: var(--muted);
+      font-style: italic;
     }
 
     /* Responsive Ajustes para Widget Creador */
@@ -1366,13 +1374,209 @@
         font-size: 0.8rem;
       }
     }
+
+    /* ---------- MODAL CV PANTALLA COMPLETA ---------- */
+    .cv-modal {
+      display: none; /* Oculto por defecto */
+      position: fixed;
+      z-index: 100000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; 
+      background-color: rgba(7, 10, 18, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .cv-modal.show {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 1;
+    }
+
+    .cv-modal-content {
+      background: rgba(14, 18, 33, 0.95);
+      border: 1px solid var(--amber);
+      border-radius: 20px;
+      padding: 40px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 0 40px rgba(255, 165, 0, 0.2), inset 0 0 20px rgba(0, 255, 255, 0.05);
+      position: relative;
+      color: var(--ink);
+      transform: translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cv-modal.show .cv-modal-content {
+      transform: translateY(0);
+    }
+
+    /* Scrollbar minimalista del modal */
+    .cv-modal-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    .cv-modal-content::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.02);
+      border-radius: 4px;
+    }
+    .cv-modal-content::-webkit-scrollbar-thumb {
+      background: var(--amber);
+      border-radius: 4px;
+    }
+
+    .cv-close {
+      color: var(--muted);
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+      line-height: 1;
+    }
+
+    .cv-close:hover {
+      color: var(--neon);
+      transform: scale(1.1);
+    }
+
+    /* Estilos internos del CV Modal */
+    .cv-modal-content h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255, 210, 77, 0.5);
+      margin-top: 0;
+      margin-bottom: 5px;
+      font-size: 2rem;
+    }
+
+    .cv-modal-content .role-title {
+      color: var(--amber);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      font-size: 1.1rem;
+    }
+
+    .cv-modal-content .contact-info {
+      font-size: 0.9rem;
+      color: var(--neon);
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .cv-modal-content h3 {
+      color: var(--green);
+      margin-top: 35px;
+      margin-bottom: 20px;
+      border-left: 3px solid var(--green);
+      padding-left: 15px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cv-modal-content p {
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      text-align: justify;
+      color: var(--ink);
+    }
+
+    .cv-modal-content ul {
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+
+    .cv-modal-content li {
+      margin-bottom: 10px;
+    }
+
+    .cv-modal-content .job-block {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .cv-modal-content .job-title {
+      font-weight: 800;
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .cv-modal-content .job-date {
+      color: var(--amber);
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(255, 210, 77, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .cv-modal-content .job-area {
+      color: var(--neon);
+      font-weight: 600;
+      margin-top: 15px;
+      margin-bottom: 8px;
+      font-size: 1.05rem;
+    }
+    
+    .cv-modal-content .skill-category {
+      font-weight: 700;
+      color: var(--magenta);
+      margin-top: 15px;
+    }
+
+    @media (max-width: 600px) {
+      .cv-modal-content {
+        padding: 25px;
+        width: 95%;
+      }
+      .cv-modal-content h2 {
+        font-size: 1.5rem;
+      }
+      .cv-close {
+        top: 10px;
+        right: 15px;
+      }
+      .cv-modal-content .job-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+    }
   </style>
 
 <body>
 
   <!-- WIDGET CREADOR FLOTANTE (Superior Derecha) -->
   <div class="creator-widget">
-    <div class="btn-importante" style="cursor: help;">
+    <div id="openCvBtn" class="btn-importante" style="cursor: pointer;" title="Haz clic para leer el currículum completo">
       <span class="spark" style="--x: 20%; --t: 2s;"></span>
       <span class="spark" style="--x: 50%; --t: 3s;"></span>
       <span class="spark" style="--x: 80%; --t: 2.5s;"></span>
@@ -1405,9 +1609,10 @@
         <strong>• Recepción y Coordinación:</strong> Apertura y gestión diaria de órdenes de trabajo para el equipo de mecánicos, chapistas y pintores. Atención directa al cliente, seguimiento proactivo de reparaciones y coordinación continua con el almacén para la verificación y control de stock.
       </div>
       
-      <a href="mailto:mifsut@protonmail.com" class="contact">
-        ✉️ mifsut@protonmail.com
-      </a>
+      <div class="contact">
+        <a href="mailto:mifsut@protonmail.com" style="color: inherit; text-decoration: none;">✉️ mifsut@protonmail.com</a>
+        <span class="click-hint">☝️ Clic arriba para CV completo</span>
+      </div>
     </div>
   </div>
 
@@ -1731,6 +1936,92 @@
     </section>
   </div>
 
+  <!-- ESTRUCTURA DEL MODAL CV A PANTALLA COMPLETA -->
+  <div id="cvModal" class="cv-modal">
+    <div class="cv-modal-content">
+      <span class="cv-close">&times;</span>
+      
+      <h2>Francisco Mifsut Barcenilla</h2>
+      <div class="role-title">Gestor Operativo y Administrativo</div>
+      
+      <div class="contact-info">
+        <span>✉️ mifsut@protonmail.com</span>
+        <span>📞 +34 66 222 56 16</span>
+        <span>📍 Almería, Andalucía</span>
+      </div>
+
+      <h3>Resumen Profesional</h3>
+      <p>Profesional administrativo y gestor operativo con más de 21 años de experiencia continuada en gestión administrativa, operativa y atención al público, desarrollada principalmente en el ámbito institucional del Ministerio de Defensa.</p>
+      <p>Especializado en el uso de sistemas ERP de gestión pública y logística (SIGLE, SIGERES, SINFRADEF), así como en control de caja, facturación, conciliación de cuentas y tramitación de documentación técnica y administrativa. Amplia experiencia en entornos de trabajo que requieren rigor procedimental, trazabilidad documental y manejo de información sensible.</p>
+      <p>Acostumbrado a trabajar bajo estándares elevados de control y calidad, aportando organización, precisión en el tratamiento de datos y fiabilidad en la gestión administrativa. Interesado en continuar desarrollando estas competencias en un nuevo entorno profesional donde contribuir con experiencia, capacidad organizativa y orientación al servicio.</p>
+
+      <h3>Experiencia Profesional</h3>
+      
+      <div class="job-block">
+        <div class="job-title">
+          <span>Administrativo/a - Ministerio de Defensa</span>
+          <span class="job-date">01-2003 hasta 07-2024 (21 años y 6 meses)</span>
+        </div>
+        <p>Soporte administrativo y operativo integral en las áreas técnica, de alimentación y de alojamiento. Encargado del registro de datos, tramitación documental y control de caja, garantizando trazabilidad y atención a usuarios.</p>
+        
+        <div class="job-area">⚙️ Área de Taller / Logística:</div>
+        <ul>
+          <li>Tramitación de solicitudes y devoluciones de repuestos mediante el sistema SIGLE (ERP).</li>
+          <li>Verificación de referencias y cantidades, seguimiento de estados y archivo documental de albaranes y conformidades.</li>
+          <li>Regularización de facturas de compras urgentes, conciliando el gasto con el consumo real y remitiendo la documentación a administración.</li>
+          <li>Gestión documental y control operativo de una flota de 15 vehículos militares Santana Aníbal. Registro semanal de kilometraje, supervisión del estado general de la flota, control de revisiones y seguros.</li>
+        </ul>
+
+        <div class="job-area">🍽️ Área de Alimentación:</div>
+        <ul>
+          <li>Gestión integral de altas/bajas y recargas de tarjetas de comida, control de saldos y emisión de listados.</li>
+          <li>Ejecución de arqueos de caja diarios, garantizando el cuadre de importes y la correcta trazabilidad de los movimientos económicos.</li>
+          <li>Gestión de reservas de plazas, aplicación de tarifas según régimen y elaboración de liquidaciones mensuales.</li>
+        </ul>
+
+        <div class="job-area">🏨 Área de Alojamiento:</div>
+        <ul>
+          <li>Gestión de cobros a nuevos residentes y mensualidades, cálculo de tarifas, emisión de recibos y facturas, y arqueo diario.</li>
+          <li>Atención directa a alojados coordinando entrega de llaves y resolución de incidencias.</li>
+          <li>Registro de movimientos y emisión de listados en el sistema SIGERES garantizando confidencialidad.</li>
+          <li>Gestión operativa a través de SINFRADEF, coordinando planificación, obras, mantenimiento, sostenibilidad y eficiencia energética.</li>
+        </ul>
+      </div>
+
+      <div class="job-block">
+        <div class="job-title">
+          <span>Recepcionista - Concesionario SEAT</span>
+          <span class="job-date">01-2001 hasta 10-2002 (1 año y 9 meses)</span>
+        </div>
+        <ul>
+          <li>Responsable de la atención directa al cliente y la organización administrativa diaria del taller.</li>
+          <li>Apertura y gestión de órdenes de trabajo para mecánicos, chapistas y pintores.</li>
+          <li>Atención telefónica y presencial para notificar finalización de trabajos.</li>
+          <li>Gestión de peticiones de repuestos y verificación de stock en almacén.</li>
+        </ul>
+      </div>
+
+      <div class="job-block">
+        <div class="job-title">
+          <span>Chapista - Concesionario SEAT</span>
+          <span class="job-date">07-2000 hasta 01-2001 (6 meses)</span>
+        </div>
+        <ul>
+          <li>Desmontaje y montaje de vehículos para peritajes y valoración de daños.</li>
+          <li>Reparaciones estructurales de chapa y sustitución de lunas.</li>
+          <li>Revisión de interiores y detección de ruidos para estándares de calidad.</li>
+        </ul>
+      </div>
+
+      <h3>Habilidades</h3>
+      <p><span class="skill-category">Administración y finanzas:</span> Arqueos de caja, Conciliación bancaria, Facturación, Liquidaciones, Control de presupuestos logísticos.</p>
+      <p><span class="skill-category">Herramientas informáticas:</span> Dominio avanzado de ofimática (Excel, Word, Outlook, PowerPoint) y programas ERP de gestión pública y logística (SIGLE, SIGERES, SINFRADEF). Conocimientos básicos de programación (Python) y diseño web.</p>
+      <p><span class="skill-category">Atención al cliente:</span> Recepción, centralita, resolución rápida de quejas/incidencias, información al usuario y gestión de reservas.</p>
+      <p><span class="skill-category">Competencias transversales:</span> Perfil inquieto y autodidacta. Alta capacidad organizativa, confidencialidad, rigor en la introducción de datos, gestión de agendas y trabajo en equipo.</p>
+
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.22/fullpage.min.js"></script>
   <script>
     // Iniciar fullPage.js y cuenta atrás
@@ -1748,6 +2039,35 @@
 
       createCountdowns();
       setInterval(createCountdowns, 1000);
+
+      // --- LOGICA DEL MODAL CV ---
+      const modal = document.getElementById("cvModal");
+      const openBtn = document.getElementById("openCvBtn");
+      const closeBtn = document.querySelector(".cv-close");
+
+      // Abrir Modal
+      openBtn.addEventListener("click", () => {
+        modal.classList.add("show");
+        // Deshabilitar scroll del fondo temporalmente para que el usuario solo navegue por el CV
+        document.body.style.overflow = "hidden";
+        if(fullpage_api) fullpage_api.setAllowScrolling(false);
+      });
+
+      // Cerrar modal al pulsar la X
+      closeBtn.addEventListener("click", () => {
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+        if(fullpage_api) fullpage_api.setAllowScrolling(true);
+      });
+
+      // Cerrar modal al pulsar fuera de la tarjeta
+      window.addEventListener("click", (e) => {
+        if (e.target == modal) {
+          modal.classList.remove("show");
+          document.body.style.overflow = "auto";
+          if(fullpage_api) fullpage_api.setAllowScrolling(true);
+        }
+      });
     });
 
     // Función para crear la cuenta atrás
