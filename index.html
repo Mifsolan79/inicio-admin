@@ -2836,13 +2836,10 @@
         card.classList.remove('error-mode', 'success-mode');
         card.classList.add('scanning-mode');
       }
-      if (btnText) btnText.textContent = '[ ESCANEANDO BIOMETRÍA... 33% ]';
-      if (statusText) statusText.textContent = 'ANALIZANDO CREDENCIAL...';
+      if (btnText) btnText.textContent = 'VERIFICANDO...';
+      if (statusText) statusText.textContent = 'COMPROBANDO CREDENCIAL...';
       if (shieldIcon) shieldIcon.textContent = '🔎';
       errorMsg.textContent = '';
-
-      await new Promise(r => setTimeout(r, 450));
-      if (btnText) btnText.textContent = '[ DECODIFICANDO AES-256... 75% ]';
 
       try {
         if (!supabaseClient && window.supabase) {
@@ -2863,7 +2860,7 @@
         }
 
         if (data === true) {
-          if (btnText) btnText.textContent = '[ ACCESO OTORGADO - BIENVENIDO ]';
+          if (btnText) btnText.textContent = 'ACCESO OTORGADO';
           if (statusText) statusText.textContent = 'ACCESO CONFIRMADO';
           if (shieldIcon) shieldIcon.textContent = '🔓';
           if (card) {
@@ -2873,15 +2870,16 @@
           
           playAccessGrantedSound();
 
-          setTimeout(() => {
-            localStorage.setItem('auth_phone_verified', 'true');
-            const overlay = document.getElementById('auth-overlay');
-            const logoutBtn = document.getElementById('logout-btn');
-            if (overlay) overlay.classList.add('hidden');
-            if (logoutBtn) logoutBtn.style.display = 'block';
-            input.value = '';
-            if (card) card.classList.remove('success-mode');
-          }, 800);
+          localStorage.setItem('auth_phone_verified', 'true');
+          const overlay = document.getElementById('auth-overlay');
+          const logoutBtn = document.getElementById('logout-btn');
+          if (overlay) {
+            overlay.classList.add('hidden');
+            overlay.style.setProperty('display', 'none', 'important');
+          }
+          if (logoutBtn) logoutBtn.style.setProperty('display', 'flex', 'important');
+          input.value = '';
+          if (card) card.classList.remove('success-mode');
 
         } else {
           if (btnText) btnText.textContent = 'VERIFICAR ACCESO';
@@ -2898,7 +2896,7 @@
             if (shieldIcon) shieldIcon.textContent = '🛡️';
             if (statusText) statusText.textContent = 'CIBERSEGURIDAD :: PROTOCOLO ACTIVO';
             if (card) card.classList.remove('error-mode');
-          }, 2000);
+          }, 1500);
         }
       } catch (err) {
         if (btnText) btnText.textContent = 'VERIFICAR ACCESO';
