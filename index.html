@@ -2084,7 +2084,7 @@
       <div class="telemetry-bar">
         <span>SEC-ID: #892-ALPHA</span>
         <span class="telemetry-separator">|</span>
-        <span id="cyber-clock">UTC 00:00:00</span>
+        <span id="cyber-clock">ESP 00:00:00</span>
         <span class="telemetry-separator">|</span>
         <span class="firewall-ok">🟢 FIREWALL OK</span>
       </div>
@@ -2582,16 +2582,14 @@
       initCyberCanvas();
     });
 
-    /* ---------- RELOJ DE TELEMETRÍA UTC ---------- */
+    /* ---------- RELOJ DE TELEMETRÍA (HORA DE ESPAÑA) ---------- */
     function initCyberClock() {
       const clockEl = document.getElementById('cyber-clock');
       function updateClock() {
         if (!clockEl) return;
         const now = new Date();
-        const hrs = String(now.getUTCHours()).padStart(2, '0');
-        const mins = String(now.getUTCMinutes()).padStart(2, '0');
-        const secs = String(now.getUTCSeconds()).padStart(2, '0');
-        clockEl.textContent = `UTC ${hrs}:${mins}:${secs}`;
+        const timeString = now.toLocaleTimeString('es-ES', { timeZone: 'Europe/Madrid', hour12: false });
+        clockEl.textContent = `ESP ${timeString}`;
       }
       updateClock();
       setInterval(updateClock, 1000);
