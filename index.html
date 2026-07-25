@@ -806,11 +806,11 @@
 
     <!-- FILTRO RÁPIDO DE SEMESTRES -->
     <div class="filter-bar">
-      <button class="filter-btn active" onclick="filterSemestres('all', this)">TODOS LOS SEMESTRES</button>
+      <button class="filter-btn" onclick="filterSemestres('all', this)">TODOS LOS SEMESTRES</button>
       <button class="filter-btn" onclick="filterSemestres('1', this)">I - SEMESTRE</button>
       <button class="filter-btn" onclick="filterSemestres('2', this)">II - SEMESTRE</button>
       <button class="filter-btn" onclick="filterSemestres('3', this)">III - SEMESTRE</button>
-      <button class="filter-btn" onclick="filterSemestres('4', this)">IV - SEMESTRE</button>
+      <button class="filter-btn active" id="btn-sem-4" onclick="filterSemestres('4', this)">IV - SEMESTRE</button>
     </div>
 
     <!-- TABLA DE ASIGNATURAS POR FILAS -->
@@ -1183,6 +1183,7 @@
       initCyberCanvas();
       updateCountdowns();
       setInterval(updateCountdowns, 1000);
+      filterSemestres('4', document.getElementById('btn-sem-4'));
     });
 
     /* FILTRO DE SEMESTRES */
