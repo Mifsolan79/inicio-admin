@@ -1562,18 +1562,18 @@
     }
     
     /* ---------- MODAL DE AUTENTICACIÓN POR TELÉFONO ---------- */
+    /* ---------- OVERLAY DE CIBERSEGURIDAD FUTURISTA ---------- */
     #auth-overlay {
       position: fixed;
       inset: 0;
       z-index: 999999;
-      background: radial-gradient(1200px 800px at 50% 20%, #100629 0%, #070a12 100%);
+      background: #040711;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 20px;
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
-      transition: opacity 0.5s ease, visibility 0.5s ease;
+      overflow: hidden;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     #auth-overlay.hidden {
@@ -1582,120 +1582,343 @@
       pointer-events: none;
     }
 
-    .auth-card {
-      background: rgba(14, 18, 33, 0.92);
-      border: 1px solid var(--neon);
-      border-radius: 24px;
-      padding: 40px 30px;
-      width: 100%;
-      max-width: 440px;
-      text-align: center;
-      box-shadow: 0 0 35px rgba(0, 255, 255, 0.25), 0 0 50px rgba(0, 0, 0, 0.8);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .auth-card::before {
-      content: '';
+    /* Fondo de malla cyber (Grid) */
+    .cyber-grid {
       position: absolute;
-      top: -50%;
-      left: -50%;
+      inset: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(0, 255, 255, 0.08) 0%, transparent 70%);
+      background-image: 
+        linear-gradient(to right, rgba(0, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 50px 50px;
+      transform: perspective(500px) rotateX(60deg);
+      animation: gridMove 20s linear infinite;
       pointer-events: none;
     }
 
+    @keyframes gridMove {
+      0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+      100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+    }
+
+    /* Línea de escaneo global (Scanline) */
+    .cyber-scanline {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, var(--neon), transparent);
+      box-shadow: 0 0 15px var(--neon);
+      opacity: 0.6;
+      animation: scanline 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes scanline {
+      0% { top: -5%; opacity: 0; }
+      50% { opacity: 0.8; }
+      100% { top: 105%; opacity: 0; }
+    }
+
+    /* Tarjeta Holográfica Cyber */
+    .auth-card {
+      position: relative;
+      background: rgba(8, 12, 26, 0.85);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 45px 35px 35px;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      box-shadow: 
+        0 0 50px rgba(0, 255, 255, 0.15),
+        0 0 80px rgba(10, 0, 30, 0.9),
+        inset 0 0 20px rgba(0, 255, 255, 0.05);
+      overflow: hidden;
+      animation: cardEntrance 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes cardEntrance {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    /* Esquinas HUD futuristas */
+    .hud-corner {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-color: var(--neon);
+      border-style: solid;
+      pointer-events: none;
+    }
+
+    .hud-corner.top-left {
+      top: 10px;
+      left: 10px;
+      border-width: 2px 0 0 2px;
+    }
+
+    .hud-corner.top-right {
+      top: 10px;
+      right: 10px;
+      border-width: 2px 2px 0 0;
+    }
+
+    .hud-corner.bottom-left {
+      bottom: 10px;
+      left: 10px;
+      border-width: 0 0 2px 2px;
+    }
+
+    .hud-corner.bottom-right {
+      bottom: 10px;
+      right: 10px;
+      border-width: 0 2px 2px 0;
+    }
+
+    /* Rayo de escaneo sobre la tarjeta */
+    .card-scan-beam {
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(135deg, transparent 40%, rgba(0, 255, 255, 0.05) 50%, transparent 60%);
+      animation: cardBeam 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes cardBeam {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    /* Escudo Cyber con Anillo Giratorio */
+    .cyber-shield-wrapper {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cyber-ring {
+      position: absolute;
+      inset: 0;
+      border: 2px dashed var(--neon);
+      border-radius: 50%;
+      animation: rotateRing 12s linear infinite;
+      opacity: 0.7;
+    }
+
+    .cyber-ring.ring-outer {
+      inset: -8px;
+      border: 1px solid rgba(255, 0, 255, 0.4);
+      border-top-color: var(--magenta);
+      border-bottom-color: var(--neon);
+      border-left-color: transparent;
+      border-right-color: transparent;
+      animation: rotateRingRev 8s linear infinite;
+    }
+
+    @keyframes rotateRing {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes rotateRingRev {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+
     .auth-icon {
-      font-size: 3rem;
-      margin-bottom: 15px;
-      filter: drop-shadow(0 0 10px var(--neon));
+      font-size: 2.8rem;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(0 0 12px var(--neon));
+      animation: shieldPulse 2.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes shieldPulse {
+      0% { transform: scale(1); filter: drop-shadow(0 0 8px var(--neon)); }
+      100% { transform: scale(1.08); filter: drop-shadow(0 0 20px var(--neon)) drop-shadow(0 0 10px var(--magenta)); }
+    }
+
+    /* Badge de Ciberseguridad */
+    .security-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 255, 162, 0.08);
+      border: 1px solid rgba(0, 255, 162, 0.3);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      backdrop-filter: blur(5px);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--green);
+      animation: dotPulse 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes dotPulse {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; box-shadow: 0 0 15px var(--green); }
+    }
+
+    .status-text {
+      font-family: Orbitron, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--green);
+      letter-spacing: 1px;
     }
 
     .auth-title {
       font-family: Orbitron, sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
+      font-weight: 900;
+      font-size: 1.6rem;
       color: #fff;
-      margin: 0 0 10px;
-      text-shadow: 0 0 10px var(--neon);
-      letter-spacing: 1px;
+      margin: 0 0 25px;
+      text-shadow: 0 0 15px var(--neon), 0 0 30px var(--neon);
+      letter-spacing: 2px;
     }
 
-    .auth-subtitle {
-      font-size: 0.88rem;
-      color: var(--muted);
-      margin-bottom: 25px;
-      line-height: 1.4;
-    }
-
+    /* Formulario e Input */
     .auth-form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
     }
 
     .auth-input-wrapper {
       position: relative;
       display: flex;
       align-items: center;
+      background: rgba(5, 8, 18, 0.85);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 12px;
+      padding: 0 14px;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+    }
+
+    .auth-input-wrapper:focus-within {
+      border-color: var(--neon);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4), inset 0 0 15px rgba(0, 255, 255, 0.1);
+    }
+
+    .input-cyber-tag {
+      font-family: Orbitron, monospace;
+      font-weight: 700;
+      color: var(--neon);
+      font-size: 1.1rem;
+      user-select: none;
+      text-shadow: 0 0 8px var(--neon);
     }
 
     .auth-input {
       width: 100%;
-      padding: 14px 18px;
-      background: rgba(7, 10, 18, 0.8);
-      border: 1px solid rgba(0, 255, 255, 0.3);
-      border-radius: 12px;
+      padding: 14px 10px;
+      background: transparent;
+      border: none;
       color: #fff;
-      font-family: Inter, sans-serif;
-      font-size: 1.05rem;
-      letter-spacing: 1px;
+      font-family: Orbitron, Inter, sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
       outline: none;
-      transition: all 0.3s ease;
       box-sizing: border-box;
       text-align: center;
     }
 
-    .auth-input:focus {
-      border-color: var(--neon);
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-      background: rgba(7, 10, 18, 0.95);
-    }
-
+    /* Botón Futurista */
     .auth-submit-btn {
-      padding: 14px 20px;
-      background: linear-gradient(135deg, var(--neon), var(--blue));
-      border: none;
+      position: relative;
+      padding: 15px 24px;
+      background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(82, 139, 255, 0.3));
+      border: 1px solid var(--neon);
       border-radius: 12px;
-      color: #070a12;
+      color: var(--neon);
       font-family: Orbitron, sans-serif;
       font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 1px;
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.25);
     }
 
     .auth-submit-btn:hover {
+      background: var(--neon);
+      color: #040711;
+      box-shadow: 0 0 30px var(--neon), 0 0 45px rgba(0, 255, 255, 0.5);
       transform: translateY(-2px);
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
-      background: linear-gradient(135deg, #33ffff, #6699ff);
     }
 
     .auth-submit-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
       transform: none;
+      box-shadow: none;
+    }
+
+    .btn-glare {
+      position: absolute;
+      top: -50%;
+      left: -100%;
+      width: 100%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transform: rotate(30deg);
+      transition: all 0.6s ease;
+    }
+
+    .auth-submit-btn:hover .btn-glare {
+      left: 100%;
     }
 
     .auth-error {
-      color: #ff5555;
-      font-size: 0.82rem;
-      margin-top: 10px;
+      color: #ff4444;
+      font-family: Orbitron, sans-serif;
+      font-size: 0.8rem;
+      margin-top: 12px;
       min-height: 20px;
-      text-shadow: 0 0 8px rgba(255, 85, 85, 0.5);
+      letter-spacing: 0.5px;
+      text-shadow: 0 0 10px rgba(255, 68, 68, 0.6);
+    }
+
+    .cyber-footer {
+      margin-top: 25px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .encryption-tag {
+      font-family: Inter, sans-serif;
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.8;
     }
 
     .logout-btn-header {
@@ -1730,20 +1953,54 @@
   <!-- BOTÓN PARA BLOQUEAR / SALIR -->
   <button id="logout-btn" class="logout-btn-header" onclick="lockAccess()">🔒 Bloquear Acceso</button>
 
-  <!-- OVERLAY DE AUTENTICACIÓN POR TELÉFONO -->
+  <!-- OVERLAY DE AUTENTICACIÓN FUTURISTA (CIBERSEGURIDAD) -->
   <div id="auth-overlay">
+    <!-- Fondo de malla cyber y línea de escaneo -->
+    <div class="cyber-grid"></div>
+    <div class="cyber-scanline"></div>
+
     <div class="auth-card">
-      <div class="auth-icon">🔒</div>
+      <!-- Esquinas HUD futuristas -->
+      <div class="hud-corner top-left"></div>
+      <div class="hud-corner top-right"></div>
+      <div class="hud-corner bottom-left"></div>
+      <div class="hud-corner bottom-right"></div>
+
+      <!-- Rayo de escaneo sobre la tarjeta -->
+      <div class="card-scan-beam"></div>
+
+      <!-- Escudo Cyber con Anillo Giratorio -->
+      <div class="cyber-shield-wrapper">
+        <div class="cyber-ring"></div>
+        <div class="cyber-ring ring-outer"></div>
+        <div class="auth-icon">🛡️</div>
+      </div>
+
+      <!-- Badge de Estado de Seguridad -->
+      <div class="security-badge">
+        <span class="status-dot"></span>
+        <span class="status-text">CIBERSEGURIDAD :: PROTOCOLO ACTIVO</span>
+      </div>
+
       <h2 class="auth-title">ACCESO PRIVADO</h2>
-      
+
       <form class="auth-form" onsubmit="handleAuthSubmit(event)">
         <div class="auth-input-wrapper">
+          <span class="input-cyber-tag">&gt;_</span>
           <input type="tel" id="auth-phone-input" class="auth-input" placeholder="" autocomplete="tel" required />
         </div>
-        <button type="submit" id="auth-submit-btn" class="auth-submit-btn">VERIFICAR ACCESO</button>
+        <button type="submit" id="auth-submit-btn" class="auth-submit-btn">
+          <span class="btn-text">VERIFICAR ACCESO</span>
+          <span class="btn-glare"></span>
+        </button>
       </form>
 
       <div id="auth-error-msg" class="auth-error"></div>
+
+      <!-- Pie de página de cifrado -->
+      <div class="cyber-footer">
+        <span class="encryption-tag">🔒 CIFRADO DE EXTREMO A EXTREMO (AES-256)</span>
+      </div>
     </div>
   </div>
 
