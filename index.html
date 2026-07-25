@@ -563,6 +563,9 @@
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
+      white-space: nowrap;
+      text-align: center;
+      width: 100%;
     }
     .sem-1 { background: rgba(0, 212, 255, 0.12); border: 1px solid rgba(0, 212, 255, 0.4); color: var(--neon); }
     .sem-2 { background: rgba(255, 0, 255, 0.12); border: 1px solid rgba(255, 0, 255, 0.4); color: var(--magenta); }
@@ -808,10 +811,10 @@
     <!-- FILTRO RÁPIDO DE SEMESTRES -->
     <div class="filter-bar">
       <button class="filter-btn" onclick="filterSemestres('all', this)">TODOS LOS SEMESTRES</button>
-      <button class="filter-btn" onclick="filterSemestres('1', this)">I - SEMESTRE</button>
-      <button class="filter-btn" onclick="filterSemestres('2', this)">II - SEMESTRE</button>
-      <button class="filter-btn" onclick="filterSemestres('3', this)">III - SEMESTRE</button>
-      <button class="filter-btn active" id="btn-sem-4" onclick="filterSemestres('4', this)">IV - SEMESTRE</button>
+      <button class="filter-btn" onclick="filterSemestres('1', this)">I SEMESTRE</button>
+      <button class="filter-btn" onclick="filterSemestres('2', this)">II SEMESTRE</button>
+      <button class="filter-btn" onclick="filterSemestres('3', this)">III SEMESTRE</button>
+      <button class="filter-btn active" id="btn-sem-4" onclick="filterSemestres('4', this)">IV SEMESTRE</button>
     </div>
 
     <!-- TABLA DE ASIGNATURAS POR FILAS -->
@@ -827,7 +830,7 @@
 
       <!-- 1ER SEMESTRE -->
       <div class="subject-row" data-sem="1">
-        <div><span class="sem-badge sem-1">I - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-1">I SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Gestión Logística y Comercial</h4>
         </div>
@@ -847,7 +850,7 @@
       </div>
 
       <div class="subject-row" data-sem="1">
-        <div><span class="sem-badge sem-1">I - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-1">I SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Itinerario Personal para la Empleabilidad I</h4>
         </div>
@@ -867,7 +870,7 @@
       </div>
 
       <div class="subject-row" data-sem="1">
-        <div><span class="sem-badge sem-1">I - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-1">I SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Ofimática y Proceso de la Información</h4>
         </div>
@@ -887,7 +890,7 @@
       </div>
 
       <div class="subject-row" data-sem="1">
-        <div><span class="sem-badge sem-1">I - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-1">I SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Gestión de la Documentación Jurídica</h4>
         </div>
@@ -908,7 +911,7 @@
 
       <!-- 2º SEMESTRE -->
       <div class="subject-row" data-sem="2">
-        <div><span class="sem-badge sem-2">II - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-2">II SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Proceso Integral de la Actividad Comercial</h4>
         </div>
@@ -928,7 +931,7 @@
       </div>
 
       <div class="subject-row" data-sem="2">
-        <div><span class="sem-badge sem-2">II - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-2">II SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Comunicación y Atención al Cliente</h4>
         </div>
@@ -948,7 +951,7 @@
       </div>
 
       <div class="subject-row" data-sem="2">
-        <div><span class="sem-badge sem-2">II - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-2">II SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Recursos Humanos y RSC</h4>
         </div>
@@ -967,7 +970,7 @@
       </div>
 
       <div class="subject-row" data-sem="2">
-        <div><span class="sem-badge sem-2">II - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-2">II SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Digitalización Aplicada a Sectores Productivos</h4>
         </div>
@@ -986,9 +989,9 @@
         </div>
       </div>
 
-      <!-- III - SEMESTRE -->
+      <!-- III SEMESTRE -->
       <div class="subject-row" data-sem="3">
-        <div><span class="sem-badge sem-3">III - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-3">III SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Simulación Empresarial (Proyecto)</h4>
         </div>
@@ -1007,7 +1010,7 @@
       </div>
 
       <div class="subject-row" data-sem="3">
-        <div><span class="sem-badge sem-3">III - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-3">III SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Catalán Profesional</h4>
         </div>
@@ -1020,7 +1023,7 @@
       </div>
 
       <div class="subject-row" data-sem="3">
-        <div><span class="sem-badge sem-3">III - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-3">III SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Itinerario Personal para la Empleabilidad II</h4>
         </div>
@@ -1040,7 +1043,7 @@
       </div>
 
       <div class="subject-row" data-sem="3">
-        <div><span class="sem-badge sem-3">III - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-3">III SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Gestión Inmobiliaria (Optativo)</h4>
         </div>
@@ -1059,9 +1062,9 @@
         </div>
       </div>
 
-      <!-- IV - SEMESTRE -->
+      <!-- IV SEMESTRE -->
       <div class="subject-row" data-sem="4">
-        <div><span class="sem-badge sem-4">IV - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-4">IV SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Gestión de Recursos Humanos</h4>
         </div>
@@ -1082,7 +1085,7 @@
       </div>
 
       <div class="subject-row" data-sem="4">
-        <div><span class="sem-badge sem-4">IV - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-4">IV SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Gestión Financiera</h4>
         </div>
@@ -1102,7 +1105,7 @@
       </div>
 
       <div class="subject-row" data-sem="4">
-        <div><span class="sem-badge sem-4">IV - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-4">IV SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Contabilidad y Fiscalidad</h4>
         </div>
@@ -1122,7 +1125,7 @@
       </div>
 
       <div class="subject-row" data-sem="4">
-        <div><span class="sem-badge sem-4">IV - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-4">IV SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Inglés Profesional</h4>
         </div>
@@ -1142,7 +1145,7 @@
       </div>
 
       <div class="subject-row" data-sem="4">
-        <div><span class="sem-badge sem-4">IV - SEMESTRE</span></div>
+        <div><span class="sem-badge sem-4">IV SEMESTRE</span></div>
         <div>
           <h4 class="sub-title">Sostenibilidad Aplicada</h4>
         </div>
