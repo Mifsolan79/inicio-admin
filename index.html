@@ -607,6 +607,29 @@
       transform: scale(1.05);
     }
 
+    /* Leyenda de Estado */
+    .legend-bar {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-bottom: 18px;
+      font-family: Orbitron, sans-serif;
+      font-size: 0.76rem;
+      letter-spacing: 1px;
+    }
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .legend-dot.exist { background: var(--green); box-shadow: 0 0 10px var(--green); }
+    .legend-dot.not-exist { background: #ff4444; box-shadow: 0 0 10px #ff4444; }
+
     /* Columna 4: Evaluaciones (Malla de unidades) */
     .eval-grid-col {
       display: grid;
@@ -619,9 +642,6 @@
       align-items: center;
       justify-content: center;
       padding: 7px 4px;
-      background: rgba(0, 255, 255, 0.1);
-      border: 1px solid rgba(0, 255, 255, 0.3);
-      color: var(--neon);
       border-radius: 7px;
       font-family: Orbitron, sans-serif;
       font-size: 0.72rem;
@@ -631,11 +651,33 @@
       text-align: center;
     }
 
-    .btn-eval:hover {
-      background: var(--neon);
+    /* Botones EXISTENTES (Verde Neón) */
+    .btn-eval.exist {
+      background: rgba(0, 255, 162, 0.12);
+      border: 1px solid var(--green);
+      color: var(--green);
+      box-shadow: 0 0 10px rgba(0, 255, 162, 0.2);
+    }
+    .btn-eval.exist:hover {
+      background: var(--green);
       color: #070a12;
-      border-color: var(--neon);
-      box-shadow: 0 0 14px var(--neon);
+      border-color: var(--green);
+      box-shadow: 0 0 18px var(--green);
+      transform: scale(1.08);
+    }
+
+    /* Botones NO EXISTENTES / PENDIENTES (Rojo Neón) */
+    .btn-eval.not-exist {
+      background: rgba(255, 68, 68, 0.14);
+      border: 1px solid rgba(255, 68, 68, 0.65);
+      color: #ff6666;
+      box-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
+    }
+    .btn-eval.not-exist:hover {
+      background: rgba(255, 68, 68, 0.35);
+      border-color: #ff4444;
+      color: #ffffff;
+      box-shadow: 0 0 18px rgba(255, 68, 68, 0.6);
       transform: scale(1.08);
     }
 
@@ -791,14 +833,14 @@
           <a href="https://www.estudiemos.es/examenes/05-piac" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-01" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-02" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-03" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-04" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-05" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-06" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-07" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/actividad-comercial-08" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -812,14 +854,14 @@
           <a href="https://www.estudiemos.es/examenes/07-comunicacion" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/comunicacion-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/comunicacion-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/comunicacion-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/comunicacion-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/comunicacion-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/comunicacion-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/comunicacion-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/comunicacion-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/comunicacion-01" class="btn-eval exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/comunicacion-02" class="btn-eval exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/comunicacion-03" class="btn-eval exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/comunicacion-04" class="btn-eval exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/comunicacion-05" class="btn-eval exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/comunicacion-06" class="btn-eval exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/comunicacion-07" class="btn-eval exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/comunicacion-08" class="btn-eval exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -833,13 +875,13 @@
           <a href="https://www.estudiemos.es/examenes/06-rrhh-y-rsc" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/rrhh-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/rrhh-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/rrhh-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/rrhh-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/rrhh-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/rrhh-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/rrhh-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/rrhh-01" class="btn-eval exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/rrhh-02" class="btn-eval exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/rrhh-03" class="btn-eval exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/rrhh-04" class="btn-eval exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/rrhh-05" class="btn-eval exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/rrhh-06" class="btn-eval exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/rrhh-07" class="btn-eval exist" target="_blank" rel="noopener">Eva 07</a>
         </div>
       </div>
 
@@ -853,14 +895,14 @@
           <a href="https://www.estudiemos.es/examenes/08-digitalizacion" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/digi-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/digi-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/digi-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/digi-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/digi-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/digi-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/digi-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/digi-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/digi-01" class="btn-eval exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/digi-02" class="btn-eval exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/digi-03" class="btn-eval exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/digi-04" class="btn-eval exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/digi-05" class="btn-eval exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/digi-06" class="btn-eval exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/digi-07" class="btn-eval exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/digi-08" class="btn-eval exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -875,14 +917,14 @@
           <a href="https://www.estudiemos.es/examenes/02-gestion-logistica" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/logistica-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/logistica-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/logistica-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/logistica-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/logistica-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/logistica-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/logistica-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/logistica-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/logistica-01" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/logistica-02" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/logistica-03" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/logistica-04" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/logistica-05" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/logistica-06" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/logistica-07" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/logistica-08" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -896,14 +938,14 @@
           <a href="https://www.estudiemos.es/examenes/04-itinerario-personal" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-01" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-02" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-03" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-04" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-05" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-06" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-07" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-i-08" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -917,14 +959,14 @@
           <a href="https://www.estudiemos.es/examenes/03-ofimatica" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/tecnologia-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/tecnologia-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/tecnologia-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/tecnologia-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/tecnologia-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/tecnologia-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/tecnologia-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/tecnologia-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/tecnologia-01" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/tecnologia-02" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/tecnologia-03" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/tecnologia-04" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/tecnologia-05" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/tecnologia-06" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/tecnologia-07" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/tecnologia-08" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -938,14 +980,14 @@
           <a href="https://www.estudiemos.es/examenes/01-gdje" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/juridica-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/juridica-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/juridica-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/juridica-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/juridica-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/juridica-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/juridica-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/juridica-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/juridica-01" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/juridica-02" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/juridica-03" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/juridica-04" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/juridica-05" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/juridica-06" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/juridica-07" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/juridica-08" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -960,14 +1002,14 @@
           <a href="https://www.estudiemos.es/examenes/10-gestion-de-rrhh" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/rse-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/rse-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/rse-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/rse-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/rse-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/rse-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/rse-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/rse-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/rse-01" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/rse-02" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/rse-03" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/rse-04" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/rse-05" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/rse-06" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/rse-07" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/rse-08" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -981,14 +1023,14 @@
           <a href="https://www.estudiemos.es/examenes/11-gestion-financiera" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-01" class="btn-eval exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-02" class="btn-eval exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-03" class="btn-eval exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-04" class="btn-eval exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-05" class="btn-eval exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-06" class="btn-eval exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-07" class="btn-eval exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-financiera-08" class="btn-eval exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -1002,14 +1044,14 @@
           <a href="https://www.estudiemos.es/examenes/12-contabilidad" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/piac-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/piac-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/piac-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/piac-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/piac-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/piac-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/piac-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/piac-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/piac-01" class="btn-eval exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/piac-02" class="btn-eval exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/piac-03" class="btn-eval exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/piac-04" class="btn-eval exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/piac-05" class="btn-eval exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/piac-06" class="btn-eval exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/piac-07" class="btn-eval exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/piac-08" class="btn-eval exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -1023,14 +1065,14 @@
           <a href="https://www.estudiemos.es/examenes/09-ingles" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/idiomas-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/idiomas-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/idiomas-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/idiomas-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/idiomas-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/idiomas-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/idiomas-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/idiomas-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/idiomas-01" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/idiomas-02" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/idiomas-03" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/idiomas-04" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/idiomas-05" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/idiomas-06" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/idiomas-07" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/idiomas-08" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -1044,7 +1086,7 @@
           <a href="https://www.estudiemos.es/examenes/13-sostenibilidad" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion" class="btn-eval single-eval" target="_blank" rel="noopener">Evaluación Sostenibilidad</a>
+          <a href="https://www.estudiemos.es/evaluacion" class="btn-eval not-exist single-eval" target="_blank" rel="noopener">Evaluación Sostenibilidad</a>
         </div>
       </div>
 
@@ -1059,13 +1101,13 @@
           <a href="https://www.estudiemos.es/examenes/17-simulacion-empresarial" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-01" class="btn-eval exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-02" class="btn-eval exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-03" class="btn-eval exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-04" class="btn-eval exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-05" class="btn-eval exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-06" class="btn-eval exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/simulacion-empresarial-07" class="btn-eval exist" target="_blank" rel="noopener">Eva 07</a>
         </div>
       </div>
 
@@ -1079,7 +1121,7 @@
           <a href="https://www.estudiemos.es/examenes/14-catalan" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/catalan" class="btn-eval single-eval" target="_blank" rel="noopener">Evaluación Catalán</a>
+          <a href="https://www.estudiemos.es/evaluacion/catalan" class="btn-eval exist single-eval" target="_blank" rel="noopener">Evaluación Catalán</a>
         </div>
       </div>
 
@@ -1093,14 +1135,14 @@
           <a href="https://www.estudiemos.es/examenes/16-empleabilidad-ii" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-01" class="btn-eval exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-02" class="btn-eval exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-03" class="btn-eval exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-04" class="btn-eval exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-05" class="btn-eval exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-06" class="btn-eval exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-07" class="btn-eval exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/empleabilidad-ii-08" class="btn-eval exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
@@ -1114,14 +1156,14 @@
           <a href="https://www.estudiemos.es/examenes/15-gestion-inmobilaria" class="btn-exam" target="_blank" rel="noopener">Exámenes</a>
         </div>
         <div class="eval-grid-col">
-          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-01" class="btn-eval" target="_blank" rel="noopener">Eva 01</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-02" class="btn-eval" target="_blank" rel="noopener">Eva 02</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-03" class="btn-eval" target="_blank" rel="noopener">Eva 03</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-04" class="btn-eval" target="_blank" rel="noopener">Eva 04</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-05" class="btn-eval" target="_blank" rel="noopener">Eva 05</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-06" class="btn-eval" target="_blank" rel="noopener">Eva 06</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-07" class="btn-eval" target="_blank" rel="noopener">Eva 07</a>
-          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-08" class="btn-eval" target="_blank" rel="noopener">Eva 08</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-01" class="btn-eval exist" target="_blank" rel="noopener">Eva 01</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-02" class="btn-eval exist" target="_blank" rel="noopener">Eva 02</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-03" class="btn-eval exist" target="_blank" rel="noopener">Eva 03</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-04" class="btn-eval exist" target="_blank" rel="noopener">Eva 04</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-05" class="btn-eval exist" target="_blank" rel="noopener">Eva 05</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-06" class="btn-eval exist" target="_blank" rel="noopener">Eva 06</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-07" class="btn-eval exist" target="_blank" rel="noopener">Eva 07</a>
+          <a href="https://www.estudiemos.es/evaluacion/gestion-inmobiliaria-08" class="btn-eval not-exist" target="_blank" rel="noopener">Eva 08</a>
         </div>
       </div>
 
