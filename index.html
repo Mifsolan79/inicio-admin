@@ -13,6 +13,7 @@
     rel="stylesheet">
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.22/fullpage.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
   <style>
     :root {
@@ -1560,14 +1561,192 @@
       text-shadow: 0 0 8px var(--neon);
     }
     
-    .click-hint {
-      font-size: 0.7rem;
+    /* ---------- MODAL DE AUTENTICACIÓN POR TELÉFONO ---------- */
+    #auth-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      background: radial-gradient(1200px 800px at 50% 20%, #100629 0%, #070a12 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #auth-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .auth-card {
+      background: rgba(14, 18, 33, 0.92);
+      border: 1px solid var(--neon);
+      border-radius: 24px;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 440px;
+      text-align: center;
+      box-shadow: 0 0 35px rgba(0, 255, 255, 0.25), 0 0 50px rgba(0, 0, 0, 0.8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(0, 255, 255, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .auth-icon {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 0 10px var(--neon));
+    }
+
+    .auth-title {
+      font-family: Orbitron, sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #fff;
+      margin: 0 0 10px;
+      text-shadow: 0 0 10px var(--neon);
+      letter-spacing: 1px;
+    }
+
+    .auth-subtitle {
+      font-size: 0.88rem;
       color: var(--muted);
-      font-style: italic;
+      margin-bottom: 25px;
+      line-height: 1.4;
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .auth-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(7, 10, 18, 0.8);
+      border: 1px solid rgba(0, 255, 255, 0.3);
+      border-radius: 12px;
+      color: #fff;
+      font-family: Inter, sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+      outline: none;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .auth-input:focus {
+      border-color: var(--neon);
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+      background: rgba(7, 10, 18, 0.95);
+    }
+
+    .auth-submit-btn {
+      padding: 14px 20px;
+      background: linear-gradient(135deg, var(--neon), var(--blue));
+      border: none;
+      border-radius: 12px;
+      color: #070a12;
+      font-family: Orbitron, sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    }
+
+    .auth-submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+      background: linear-gradient(135deg, #33ffff, #6699ff);
+    }
+
+    .auth-submit-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .auth-error {
+      color: #ff5555;
+      font-size: 0.82rem;
+      margin-top: 10px;
+      min-height: 20px;
+      text-shadow: 0 0 8px rgba(255, 85, 85, 0.5);
+    }
+
+    .logout-btn-header {
+      position: fixed;
+      top: 25px;
+      left: 30px;
+      z-index: 9999;
+      background: rgba(14, 18, 33, 0.85);
+      border: 1px solid rgba(255, 85, 85, 0.4);
+      color: #ff7777;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-family: Orbitron, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      display: none;
+    }
+
+    .logout-btn-header:hover {
+      background: rgba(255, 85, 85, 0.2);
+      border-color: #ff5555;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(255, 85, 85, 0.4);
     }
   </style>
 
 <body>
+
+  <!-- BOTÓN PARA BLOQUEAR / SALIR -->
+  <button id="logout-btn" class="logout-btn-header" onclick="lockAccess()">🔒 Bloquear Acceso</button>
+
+  <!-- OVERLAY DE AUTENTICACIÓN POR TELÉFONO -->
+  <div id="auth-overlay">
+    <div class="auth-card">
+      <div class="auth-icon">🔒</div>
+      <h2 class="auth-title">ACCESO PRIVADO</h2>
+      <p class="auth-subtitle">Introduce tu número de teléfono para acceder al panel de administración.</p>
+      
+      <form class="auth-form" onsubmit="handleAuthSubmit(event)">
+        <div class="auth-input-wrapper">
+          <input type="tel" id="auth-phone-input" class="auth-input" placeholder="Ej: 600000000" autocomplete="tel" required />
+        </div>
+        <button type="submit" id="auth-submit-btn" class="auth-submit-btn">VERIFICAR ACCESO</button>
+      </form>
+
+      <div id="auth-error-msg" class="auth-error"></div>
+    </div>
+  </div>
 
   <div id="fullpage">
     <!-- SECCIÓN 1: PORTADA Y CUENTA ATRÁS -->
@@ -2007,9 +2186,94 @@
       }
     }
   </script>
-</body>
 
-</html>
+  <!-- Lógica de Autenticación Privada por Teléfono (Supabase) -->
+  <script>
+    const SUPABASE_URL = 'https://qksojpxbmktozaiaqyhu.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFrc29qcHhibWt0b3phaWFxeWh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMzMDg2OTIsImV4cCI6MjA3ODg4NDY5Mn0.5PGy-bbK-P2iRGgbEoK2vEpoPzbnRsq1_kbyQsuCmKQ';
+    let supabaseClient = null;
+
+    if (window.supabase) {
+      supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      checkAccessState();
+    });
+
+    function checkAccessState() {
+      const isVerified = localStorage.getItem('auth_phone_verified') === 'true';
+      const overlay = document.getElementById('auth-overlay');
+      const logoutBtn = document.getElementById('logout-btn');
+
+      if (isVerified) {
+        if (overlay) overlay.classList.add('hidden');
+        if (logoutBtn) logoutBtn.style.display = 'block';
+      } else {
+        if (overlay) overlay.classList.remove('hidden');
+        if (logoutBtn) logoutBtn.style.display = 'none';
+      }
+    }
+
+    async function handleAuthSubmit(event) {
+      event.preventDefault();
+      const input = document.getElementById('auth-phone-input');
+      const btn = document.getElementById('auth-submit-btn');
+      const errorMsg = document.getElementById('auth-error-msg');
+
+      if (!input || !btn) return;
+
+      const phoneValue = input.value.trim();
+      if (!phoneValue) {
+        errorMsg.textContent = 'Por favor, introduce un número de teléfono válido.';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'VERIFICANDO...';
+      errorMsg.textContent = '';
+
+      try {
+        if (!supabaseClient && window.supabase) {
+          supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        }
+
+        if (!supabaseClient) {
+          throw new Error('No se pudo conectar con el servidor de autenticación.');
+        }
+
+        const { data, error } = await supabaseClient.rpc('check_phone_access', {
+          phone_input: phoneValue
+        });
+
+        if (error) {
+          console.error('Error Supabase:', error);
+          throw new Error('Error de conexión al verificar el teléfono.');
+        }
+
+        if (data === true) {
+          localStorage.setItem('auth_phone_verified', 'true');
+          const overlay = document.getElementById('auth-overlay');
+          const logoutBtn = document.getElementById('logout-btn');
+          if (overlay) overlay.classList.add('hidden');
+          if (logoutBtn) logoutBtn.style.display = 'block';
+          input.value = '';
+        } else {
+          errorMsg.textContent = '❌ Número de teléfono no autorizado para acceder.';
+        }
+      } catch (err) {
+        errorMsg.textContent = '⚠️ ' + (err.message || 'Error inesperado al comprobar el acceso.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'VERIFICAR ACCESO';
+      }
+    }
+
+    function lockAccess() {
+      localStorage.removeItem('auth_phone_verified');
+      checkAccessState();
+    }
+  </script>
 </body>
 
 </html>
