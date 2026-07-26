@@ -735,17 +735,131 @@
     }
 
     @media (max-width: 900px) {
-      .top-widgets-row { grid-template-columns: 1fr; }
+      body {
+        background-attachment: scroll;
+        background-position: center top;
+      }
+
+      .dashboard-container {
+        padding: 76px 14px 50px;
+      }
+
+      .dashboard-header {
+        margin-bottom: 22px;
+      }
+
+      .cover-title {
+        font-size: clamp(24px, 7vw, 34px);
+        line-height: 1.15;
+        letter-spacing: 1.5px;
+      }
+
+      .logout-btn-header {
+        top: 10px !important;
+        left: 10px !important;
+        padding: 9px 12px !important;
+        font-size: 0.68rem !important;
+      }
+
+      .top-widgets-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .countdown-card {
+        width: 100%;
+        padding: 14px 12px 12px;
+      }
+
+      .countdown-title {
+        font-size: 0.8rem;
+      }
+
+      .countdown-timer {
+        gap: 24px;
+      }
+
+      .filter-bar {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+        margin-bottom: 22px;
+      }
+
+      .filter-btn {
+        min-height: 46px;
+        padding: 9px 8px;
+        font-size: 0.68rem;
+        line-height: 1.25;
+      }
+
+      .filter-btn:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .cyber-table-container {
+        gap: 12px;
+      }
+
+      .subject-row {
+        gap: 13px;
+        padding: 15px 12px;
+        background: rgba(8, 17, 30, 0.32);
+        border-radius: 14px;
+      }
+
+      .sem-badge {
+        min-height: 34px;
+        font-size: 0.68rem;
+      }
+
+      .sub-title {
+        width: 100%;
+        padding: 9px 8px;
+        font-size: 0.78rem;
+      }
+
+      .btn-exam {
+        width: min(100%, 220px);
+        min-height: 50px;
+        margin: 0 auto;
+      }
+
+      .eval-grid-col {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .btn-eval {
+        min-height: 44px;
+        padding: 9px 5px;
+        font-size: 0.68rem;
+      }
+
+      .btn-eval.single-eval {
+        grid-column: 1 / -1;
+      }
     }
 
     @media (max-width: 650px) {
       .eval-grid-col { grid-template-columns: repeat(2, 1fr); }
-      .top-widgets-row { gap: 12px; }
-      .countdown-card { padding: 13px 8px 12px; }
-      .countdown-timer { gap: 10px; }
+      .dashboard-container { padding-inline: 10px; }
+      .countdown-timer { gap: 18px; }
+      .time-number { font-size: 1.35rem; }
+      .time-label { font-size: 0.62rem; margin-left: 3px; }
+      .countdown-date { font-size: 0.7rem; line-height: 1.35; }
+      .legend-bar { flex-wrap: wrap; gap: 10px 18px; }
+      .subject-row { padding-inline: 10px; }
+      .btn-eval { min-height: 46px; }
+    }
+
+    @media (max-width: 380px) {
+      .dashboard-container { padding-inline: 8px; }
+      .cover-title { font-size: 22px; }
+      .filter-btn { font-size: 0.62rem; }
       .time-number { font-size: 1.2rem; }
-      .time-label { font-size: 0.58rem; margin-left: 2px; }
-      .countdown-date { font-size: 0.72rem; }
+      .time-label { font-size: 0.56rem; }
     }
   </style>
 </head>
