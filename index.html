@@ -382,10 +382,10 @@
     /* Cuentas atrás y Banners */
     .top-widgets-row {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
       margin: 8px auto 24px;
-      max-width: 1120px;
+      max-width: 1500px;
     }
 
     .countdown-card {
@@ -402,8 +402,8 @@
     }
 
     .course-range-card {
-      width: min(100%, 720px);
-      margin: -8px auto 24px;
+      width: 100%;
+      margin: 0;
       border-color: rgba(255, 193, 7, 0.42);
       box-shadow: 0 0 26px rgba(255, 193, 7, 0.12);
     }
@@ -719,6 +719,10 @@
       }
       .sem-badge { width: fit-content; margin: 0 auto; }
       .eval-grid-col { grid-template-columns: repeat(4, 1fr); }
+      .top-widgets-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 900px) {
       .top-widgets-row { grid-template-columns: 1fr; }
     }
 
@@ -802,10 +806,17 @@
         <div class="countdown-timer" id="timer-inicio">
           <div class="time-unit"><span class="time-number" id="start-days">00</span><span class="time-label">Días</span></div>
           <div class="time-unit"><span class="time-number" id="start-hours">00</span><span class="time-label">Horas</span></div>
-          <div class="time-unit"><span class="time-number" id="start-mins">00</span><span class="time-label">Min</span></div>
-          <div class="time-unit"><span class="time-number" id="start-secs">00</span><span class="time-label">Seg</span></div>
         </div>
         <div class="countdown-date">📅 lunes, 21 de septiembre de 2026</div>
+      </div>
+
+      <div class="countdown-card course-range-card">
+        <div class="countdown-title">DEL INICIO AL FIN DE CURSO</div>
+        <div class="countdown-timer" id="timer-course">
+          <div class="time-unit"><span class="time-number" id="course-days">00</span><span class="time-label">Días</span></div>
+          <div class="time-unit"><span class="time-number" id="course-hours">00</span><span class="time-label">Horas</span></div>
+        </div>
+        <div class="countdown-date">📅 21 de septiembre → 19 de diciembre de 2026</div>
       </div>
 
       <div class="countdown-card">
@@ -813,8 +824,6 @@
         <div class="countdown-timer" id="timer-fin">
           <div class="time-unit"><span class="time-number" id="end-days">00</span><span class="time-label">Días</span></div>
           <div class="time-unit"><span class="time-number" id="end-hours">00</span><span class="time-label">Horas</span></div>
-          <div class="time-unit"><span class="time-number" id="end-mins">00</span><span class="time-label">Min</span></div>
-          <div class="time-unit"><span class="time-number" id="end-secs">00</span><span class="time-label">Seg</span></div>
         </div>
         <div class="countdown-date">📅 sábado, 19 de diciembre de 2026</div>
       </div>
@@ -823,17 +832,6 @@
 
 
     <!-- FILTRO RÁPIDO DE SEMESTRES -->
-    <div class="countdown-card course-range-card">
-      <div class="countdown-title">DEL INICIO AL FIN DE CURSO</div>
-      <div class="countdown-timer" id="timer-course">
-        <div class="time-unit"><span class="time-number" id="course-days">00</span><span class="time-label">Días</span></div>
-        <div class="time-unit"><span class="time-number" id="course-hours">00</span><span class="time-label">Horas</span></div>
-        <div class="time-unit"><span class="time-number" id="course-mins">00</span><span class="time-label">Min</span></div>
-        <div class="time-unit"><span class="time-number" id="course-secs">00</span><span class="time-label">Seg</span></div>
-      </div>
-      <div class="countdown-date">📅 21 de septiembre → 19 de diciembre de 2026</div>
-    </div>
-
     <div class="filter-bar">
       <button class="filter-btn" onclick="filterSemestres('all', this)">TODOS LOS SEMESTRES</button>
       <button class="filter-btn" onclick="filterSemestres('1', this)">I SEMESTRE</button>
@@ -1247,19 +1245,13 @@
         if (diff <= 0) {
           document.getElementById(prefix + '-days').textContent = '00';
           document.getElementById(prefix + '-hours').textContent = '00';
-          document.getElementById(prefix + '-mins').textContent = '00';
-          document.getElementById(prefix + '-secs').textContent = '00';
           return;
         }
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
         document.getElementById(prefix + '-days').textContent = String(days).padStart(2, '0');
         document.getElementById(prefix + '-hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById(prefix + '-mins').textContent = String(mins).padStart(2, '0');
-        document.getElementById(prefix + '-secs').textContent = String(secs).padStart(2, '0');
       }
 
       applyTimer(startDate - now, 'start');
