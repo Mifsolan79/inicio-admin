@@ -383,17 +383,19 @@
     .top-widgets-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 28px;
+      margin: 8px auto 24px;
+      max-width: 1120px;
     }
 
     .countdown-card {
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      padding: 4px 0;
+      background: rgba(5, 10, 22, 0.48);
+      border: 1px solid rgba(102, 204, 255, 0.28);
+      border-radius: 16px;
+      box-shadow: 0 0 24px rgba(0, 191, 255, 0.12);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      padding: 15px 18px 13px;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -401,41 +403,47 @@
 
     .countdown-title {
       font-family: Orbitron, sans-serif;
-      font-size: 0.72rem;
-      color: #66ccff;
-      margin-bottom: 3px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #8cddff;
+      margin-bottom: 8px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.4px;
       text-align: center;
+      text-shadow: 0 0 10px rgba(0, 191, 255, 0.55);
     }
 
     .countdown-timer {
       display: flex;
       justify-content: center;
-      gap: 14px;
+      align-items: baseline;
+      gap: 22px;
     }
 
     .time-unit { text-align: center; }
     .time-number {
       display: inline;
       font-family: Orbitron, sans-serif;
-      font-size: 1.05rem;
-      font-weight: 800;
+      font-size: clamp(1.35rem, 1.8vw, 1.75rem);
+      font-weight: 900;
       color: var(--neon);
-      text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+      text-shadow: 0 0 11px rgba(0, 255, 255, 0.65);
     }
     .time-label {
-      font-size: 0.62rem;
-      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #d5deed;
       text-transform: uppercase;
-      margin-left: 2px;
+      margin-left: 4px;
     }
 
     .countdown-date {
       text-align: center;
-      font-size: 0.68rem;
+      font-size: 0.82rem;
+      font-weight: 600;
       color: var(--amber);
-      margin-top: 3px;
+      margin-top: 8px;
+      text-shadow: 0 0 8px rgba(255, 193, 7, 0.2);
     }
 
     /* Banner Asistente IA */
@@ -701,6 +709,12 @@
 
     @media (max-width: 650px) {
       .eval-grid-col { grid-template-columns: repeat(2, 1fr); }
+      .top-widgets-row { gap: 12px; }
+      .countdown-card { padding: 13px 8px 12px; }
+      .countdown-timer { gap: 10px; }
+      .time-number { font-size: 1.2rem; }
+      .time-label { font-size: 0.58rem; margin-left: 2px; }
+      .countdown-date { font-size: 0.72rem; }
     }
   </style>
 </head>
