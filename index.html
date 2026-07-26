@@ -401,6 +401,13 @@
       justify-content: center;
     }
 
+    .course-range-card {
+      width: min(100%, 720px);
+      margin: -8px auto 24px;
+      border-color: rgba(255, 193, 7, 0.42);
+      box-shadow: 0 0 26px rgba(255, 193, 7, 0.12);
+    }
+
     .countdown-title {
       font-family: Orbitron, sans-serif;
       font-size: 0.9rem;
@@ -808,6 +815,17 @@
 
 
     <!-- FILTRO RÁPIDO DE SEMESTRES -->
+    <div class="countdown-card course-range-card">
+      <div class="countdown-title">DEL INICIO AL FIN DE CURSO</div>
+      <div class="countdown-timer" id="timer-course">
+        <div class="time-unit"><span class="time-number" id="course-days">00</span><span class="time-label">Días</span></div>
+        <div class="time-unit"><span class="time-number" id="course-hours">00</span><span class="time-label">Horas</span></div>
+        <div class="time-unit"><span class="time-number" id="course-mins">00</span><span class="time-label">Min</span></div>
+        <div class="time-unit"><span class="time-number" id="course-secs">00</span><span class="time-label">Seg</span></div>
+      </div>
+      <div class="countdown-date">📅 21 de septiembre → 19 de diciembre de 2026</div>
+    </div>
+
     <div class="filter-bar">
       <button class="filter-btn" onclick="filterSemestres('all', this)">TODOS LOS SEMESTRES</button>
       <button class="filter-btn" onclick="filterSemestres('1', this)">I SEMESTRE</button>
@@ -1238,6 +1256,7 @@
 
       applyTimer(startDate - now, 'start');
       applyTimer(endDate - now, 'end');
+      applyTimer(now < startDate ? endDate - startDate : endDate - now, 'course');
     }
 
     /* SFX SONIDOS */
